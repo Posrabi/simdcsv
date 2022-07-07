@@ -1,13 +1,15 @@
 #ifndef SIMDCSV_JSONIOUTIL_H
 #define SIMDCSV_JSONIOUTIL_H
 
+#include <stdlib.h>
+#include <stdint.h>
 #include "common_defs.h"
-#include <exception>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <string>
 
+// Wrapper struct around u_char to keep track of its size. Must FREE after .buf field after use.
+typedef struct Buffer {
+    u_char* buf;
+    size_t size;
+} Buffer;
 
 // low-level function to allocate memory with padding so we can read passed the "length" bytes
 // safely.
@@ -31,6 +33,6 @@ uint8_t * allocate_padded_buffer(size_t length, size_t padding);
 //        aligned_free((void*)p.data());
 //        std::cout << "Could not load the file " << filename << std::endl;
 //      }
-std::basic_string_view<uint8_t>  get_corpus(const std::string& filename, size_t padding);
+Buffer get_corpus(const char* filename, size_t padding);
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef SIMDCSV_COMMON_DEFS_H
 #define SIMDCSV_COMMON_DEFS_H
 
-#include <cassert>
+#include <assert.h>
 
 // the input buf should be readable up to buf + SIMDJSON_PADDING
 #ifdef __AVX2__

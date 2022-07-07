@@ -1,11 +1,14 @@
 #ifndef PORTABILITY_H
 #define PORTABILITY_H
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdint.h>
 
 #ifdef _MSC_VER
 /* Microsoft C/C++-compatible compiler */
 #include <intrin.h>
 #include <iso646.h>
-#include <cstdint>
+
 
 static inline bool add_overflow(uint64_t value1, uint64_t value2, uint64_t *result) {
 	return _addcarry_u64(0, value1, value2, reinterpret_cast<unsigned __int64 *>(result));
@@ -37,8 +40,6 @@ static inline int hamming(uint64_t input_num) {
 }
 
 #else
-#include <cstdint>
-#include <cstdlib>
 
 #if defined(__BMI2__) || defined(__POPCOUNT__) || defined(__AVX2__)
 #include <x86intrin.h>
