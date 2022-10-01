@@ -1,4 +1,4 @@
-# A scaringly fast replacement for Go's encoding/csv.
+# A blazingly fast replacement for Go's encoding/csv.
 
 This is a fork from [geofflangdale/simdcsv](https://github.com/geofflangdale/simdcsv), ported to C and uses CGO bindings to call it in Go.
 
